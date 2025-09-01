@@ -126,6 +126,7 @@ Every pixel designed for emotional clarity:
 
 ### Landing Page Experience
 ![Landing Page](LANDING_PAGE_IMAGE_PLACEHOLDER)
+![landing page](image.png)
 *First impressions matter. Our landing page immediately communicates value through emotional design.*
 
 ### Onboarding Flow
