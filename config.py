@@ -3,14 +3,7 @@ import os
 class Config:
     # Core Flask settings
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-key')
-
-    # Async-compatible database URI
-    RAW_DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///dev.db')
-    SQLALCHEMY_DATABASE_URI = (
-        RAW_DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://")
-        if RAW_DATABASE_URL.startswith("postgresql://")
-        else RAW_DATABASE_URL
-    )
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///dev.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Mail settings
@@ -23,6 +16,6 @@ class Config:
     # Hugging Face API
     HF_API_TOKEN = os.getenv('HF_API_TOKEN')
 
-    # Paystack API keys
+    # IntaSend API keys
     PAYSTACK_PUBLIC_KEY = os.getenv("PAYSTACK_PUBLIC_KEY")
     PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY")
