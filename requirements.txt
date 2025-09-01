@@ -14,7 +14,7 @@ MarkupSafe==3.0.2
 # ORM & Database
 SQLAlchemy==2.0.43
 greenlet==3.2.4
-psycopg2-binary==2.9.9   # Compatible with Python 3.11
+psycopg[binary]==3.2.1  # Compatible with Python 3.11
 
 # Deployment
 gunicorn==21.2.0
