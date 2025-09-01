@@ -131,18 +131,28 @@ Every pixel designed for emotional clarity:
 
 ### Onboarding Flow
 ![Onboarding Flow](ONBOARDING_IMAGE_PLACEHOLDER)
+
+![Get started by indicating how you are feeling](image-1.png)
 *Gentle introduction to emotional check-ins and personalization setup.*
 
 ### Journaling Interface
 ![Journaling Interface](JOURNALING_IMAGE_PLACEHOLDER)
+
+![This is  Your Journal](image-2.png)
+
 *Clean, distraction-free writing environment with real-time sentiment feedback.*
+
 
 ### Meditation Selection
 ![Meditation Selection](MEDITATION_SELECTION_IMAGE_PLACEHOLDER)
+
+![Perefect recomendation for you ](image-3.png)
 *Intelligent recommendation engine suggesting perfect meditations for your current state.*
 
 ### Dashboard Analytics
 ![Analytics Dashboard](ANALYTICS_IMAGE_PLACEHOLDER)
+
+![Analytics Dashboard ](image-4.png)
 *Beautiful data visualization that makes emotional patterns clear and actionable.*
 
 ---
@@ -393,6 +403,8 @@ Each meditation is crafted using evidence-based techniques from cognitive behavi
 
 ![Analytics Dashboard](ANALYTICS_DASHBOARD_IMAGE_PLACEHOLDER)
 
+![Dashboard Analytics](image-5.png)
+
 Transform abstract emotions into actionable insights:
 
 **Mood Trends Analysis:**
@@ -518,10 +530,10 @@ flask db upgrade
 python scripts/seed_meditations.py
 
 # 6. Launch application
-flask run
+python app.py
 ```
 
-**🎉 Success!** Navigate to `http://localhost:5000` and experience emotional intelligence in action.
+**🎉 Success!** Navigate to `http://127.0.0.1:5000/` and experience emotional intelligence in action.
 
 ---
 
@@ -1073,7 +1085,7 @@ Martin is building more than an app — he's cultivating a movement:
 
 ### Get in Touch
 
-**📧 Email**: [martin@mindfulminutes.com](mailto:EMAIL_PLACEHOLDER)  
+**📧 Email**: [mutugimartin967@gmail.com](mailto:EMAIL_PLACEHOLDER)  
 *For business inquiries, collaboration opportunities, or technical questions*
 
 **🐙 GitHub**: [@martinmutugi](https://github.com/martinmutugi)  
