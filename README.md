@@ -2,9 +2,7 @@
 
 **Micro-meditations. Macro-impact. Built in Africa for the World.**
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](LIVE_LINK_PLACEHOLDER)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![https://mindfulminutes.onrender.com](https://img.shields.io/badge/Live-Demo-brightgreen)](LIVE_LINK_PLACEHOLDER)
 
 ![Mindful Minutes Hero Banner](HERO_IMAGE_PLACEHOLDER)
 
