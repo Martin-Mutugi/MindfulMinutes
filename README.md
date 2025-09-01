@@ -1,10 +1,9 @@
 # 🧘 Mindful Minutes
 
+Live link: https://mindfulminutes.onrender.com
+
 **Micro-meditations. Macro-impact. Built in Africa for the World.**
 
-[![https://mindfulminutes.onrender.com](https://img.shields.io/badge/Live-Demo-brightgreen)](LIVE_LINK_PLACEHOLDER)
-
-![Mindful Minutes Hero Banner](HERO_IMAGE_PLACEHOLDER)
 
 > *"In a world that never stops, we create moments that matter. Sixty seconds of clarity can transform an entire day."*
 
