@@ -39,3 +39,6 @@ charset-normalizer==3.3.2
 # Typing & Parsing
 typing_extensions==4.12.2
 tomli==2.0.1
+email_validator==2.3.0
+
+
