@@ -14,7 +14,7 @@ MarkupSafe==3.0.2
 # ORM & Database
 SQLAlchemy==2.0.43
 greenlet==3.2.4
-psycopg2-binary==2.9.9  # Added PostgreSQL driver
+psycopg[binary]==3.2.1 # Added PostgreSQL driver
 
 # Deployment
 gunicorn==21.2.0

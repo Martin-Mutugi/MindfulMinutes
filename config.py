@@ -3,7 +3,13 @@ import os
 class Config:
     # Core Flask settings
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-key')
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///dev.db')
+    
+    # Database URL handling - fix for Render PostgreSQL
+    database_url = os.getenv('DATABASE_URL', 'sqlite:///dev.db')
+    if database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    SQLALCHEMY_DATABASE_URI = database_url
+    
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Mail settings
