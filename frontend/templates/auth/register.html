@@ -1,23 +1,120 @@
 {% extends 'base.html' %}
+
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+<style>
+  body {
+    background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+  }
+
+  .auth-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    animation: fadeIn 1s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .auth-intro {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .auth-intro h1 {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 10px;
+  }
+
+  .auth-intro p {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .form-auth {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px;
+    animation: slideUp 0.8s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .form-auth label {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: #00bfa5;
+    outline: none;
+  }
+
+  .btn-primary {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: #00bfa5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #009e8f;
+    transform: scale(1.03);
+  }
+</style>
 {% endblock %}
 
 {% block title %}Sign Up{% endblock %}
+
 {% block content %}
-<form method="POST" action="{{ url_for('auth.register') }}" class="form-auth">
-  <h2>Create Account</h2>
-  {{ form.hidden_tag() }}
+<div class="auth-wrapper">
+  <div class="auth-intro">
+    <h1>Create Your Mindful Minutes Account</h1>
+    <p>Join a movement of emotional clarity and micro-meditation.</p>
+  </div>
 
-  <label for="name">Full Name</label>
-  {{ form.name(class="form-control", placeholder="Full Name") }}
+  <form method="POST" action="{{ url_for('auth.register') }}" class="form-auth">
+    {{ form.hidden_tag() }}
 
-  <label for="email">Email</label>
-  {{ form.email(class="form-control", placeholder="Email") }}
+    <label for="name">Full Name</label>
+    {{ form.name(class="form-control", placeholder="Full Name") }}
 
-  <label for="password">Password</label>
-  {{ form.password(class="form-control", placeholder="Password") }}
+    <label for="email">Email</label>
+    {{ form.email(class="form-control", placeholder="Email") }}
 
-  {{ form.submit(class="btn btn-primary") }}
-</form>
+    <label for="password">Password</label>
+    {{ form.password(class="form-control", placeholder="Password") }}
+
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
 {% endblock %}
