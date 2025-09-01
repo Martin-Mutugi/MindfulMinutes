@@ -1,0 +1,194 @@
+/* Page Title */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Mood Filter Form */
+.mood-filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.mood-filter-form label {
+  font-weight: 500;
+  color: #444;
+}
+
+.mood-filter-form select,
+.mood-filter-form button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* New Entry Button */
+.btn-primary {
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/* Journal List Grid */
+.journal-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+/* Entry Card */
+.entry-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  font-size: 0.9rem;
+  border-left: 4px solid #ccc;
+}
+
+.entry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Mood-Based Accent */
+.entry-card[data-mood="sad"] { border-left-color: #607d8b; }
+.entry-card[data-mood="happy"] { border-left-color: #ffeb3b; }
+.entry-card[data-mood="anxious"] { border-left-color: #f44336; }
+.entry-card[data-mood="calm"] { border-left-color: #4caf50; }
+
+/* Entry Header */
+.entry-header {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-header a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.entry-header a:hover {
+  text-decoration: underline;
+}
+
+.entry-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Entry Meta */
+.entry-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  color: #555;
+}
+
+.entry-mood {
+  font-weight: 500;
+}
+
+.entry-sentiment {
+  font-style: italic;
+  color: #666;
+}
+
+/* Meditation Preview */
+.meditation-preview {
+  margin-top: 0.6rem;
+  background-color: #f9f9f9;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.meditation-preview audio {
+  width: 100%;
+  margin-top: 0.4rem;
+}
+.entry-form-slim {
+  max-width: 480px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.entry-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group-inline label {
+  font-weight: 500;
+  color: #444;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.form-control {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Journal{% endblock %}
+{% block content %}
+<h2>Your Journal</h2>
+
+<!-- Mood Filter -->
+<form method="GET" action="{{ url_for('journal.index') }}" class="mood-filter-form">
+  <label for="mood">Filter by Mood:</label>
+  <select name="mood" id="mood">
+    <option value="">All Moods</option>
+    <option value="sad">😢 Sad</option>
+    <option value="happy">😊 Happy</option>
+    <option value="anxious">😰 Anxious</option>
+    <option value="calm">😌 Calm</option>
+  </select>
+  <button type="submit" class="btn-secondary">Filter</button>
+</form>
+
+<a href="{{ url_for('journal.entry') }}" class="btn-primary">New Entry</a>
+
+<ul class="journal-list">
+  {% for entry in entries %}
+    <li class="entry-card" data-mood="{{ entry.mood }}">
+      <div class="entry-header">
+        <a href="{{ url_for('journal.view', id=entry.id) }}">
+          {{ entry.content[:50] }}...
+        </a>
+        <span class="entry-date">
+          • {{ entry.created_at.strftime('%b %d, %Y %I:%M %p') }}
+        </span>
+      </div>
+
+      <div class="entry-meta">
+        <span class="entry-mood">
+          {% if entry.mood == 'sad' %}
+            😢
+          {% elif entry.mood == 'happy' %}
+            😊
+          {% elif entry.mood == 'anxious' %}
+            😰
+          {% elif entry.mood == 'calm' %}
+            😌
+          {% else %}
+            📝
+          {% endif %}
+          {{ entry.mood }}
+        </span>
+        <span class="entry-sentiment">
+          | Sentiment: {{ entry.sentiment_label }} ({{ "%.2f"|format(entry.sentiment_score) }})
+        </span>
+      </div>
+
+      {% if entry.recommended %}
+        <div class="meditation-preview">
+          <p><strong>{{ entry.recommended.title }}</strong>: {{ entry.recommended.description }}</p>
+          <audio controls>
+            <source src="{{ entry.recommended.audio_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

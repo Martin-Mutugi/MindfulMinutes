@@ -1,0 +1,36 @@
+<nav class="main-nav">
+  <ul>
+    <li><a href="{{ url_for('main.index') }}" class="{% if request.endpoint == 'main.index' %}active{% endif %}">
+      <i class="fas fa-home"></i> Home</a></li>
+
+    <li><a href="{{ url_for('meditation.recommend') }}" class="{% if request.endpoint == 'meditation.recommend' %}active{% endif %}">
+      <i class="fas fa-spa"></i> Recommended</a></li>
+
+    <li><a href="{{ url_for('meditation.all_meditations') }}" class="{% if request.endpoint == 'meditation.all_meditations' %}active{% endif %}">
+      <i class="fas fa-list"></i> All Meditations</a></li>
+
+    <li><a href="{{ url_for('journal.index') }}" class="{% if request.endpoint == 'journal.index' %}active{% endif %}">
+      <i class="fas fa-book"></i> Journal</a></li>
+
+    <li><a href="{{ url_for('dashboard.index') }}" class="{% if request.endpoint == 'dashboard.index' %}active{% endif %}">
+      <i class="fas fa-chart-line"></i> Dashboard</a></li>
+
+    {% if current_user.is_authenticated and current_user.is_premium %}
+      <li><a href="{{ url_for('analytics.mood') }}"><i class="fas fa-brain"></i> Mood Analytics</a></li>
+      <li><a href="{{ url_for('badges.index') }}"><i class="fas fa-medal"></i> Badges</a></li>
+      <li><span class="badge badge-premium">🌟 Premium Member</span></li>
+    {% elif current_user.is_authenticated %}
+      <li><a href="{{ url_for('subscription.plans') }}"><i class="fas fa-star"></i> Upgrade to Premium</a></li>
+    {% endif %}
+
+    <li><a href="{{ url_for('support.help') }}" class="{% if request.endpoint == 'support.help' %}active{% endif %}">
+      <i class="fas fa-life-ring"></i> Support</a></li>
+  </ul>
+
+  <!-- 🌗 Dark Mode Toggle -->
+  <div class="theme-toggle">
+    <button id="darkToggle" class="btn btn-sm" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</nav>

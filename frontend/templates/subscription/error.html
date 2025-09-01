@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Payment Error{% endblock %}
+{% block content %}
+<h2>⚠️ Payment Error</h2>
+<p>{{ error }}</p>
+<a href="{{ url_for('subscription.plans') }}" class="btn">Back to Plans</a>
+{% endblock %}

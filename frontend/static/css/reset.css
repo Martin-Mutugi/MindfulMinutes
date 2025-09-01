@@ -1,0 +1,32 @@
+.reset-wrapper {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.reset-wrapper h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.6s ease forwards;
+}
+
+.reset-wrapper input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.reset-wrapper input:focus {
+  border-color: #e67e22;
+}
+
+.reset-wrapper .btn-primary {
+  width: 100%;
+  margin-top: 1rem;
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<form method="POST" action="{{ url_for('auth.register') }}" class="form-auth">
+  <h2>Create Account</h2>
+  {{ form.hidden_tag() }}
+
+  <label for="name">Full Name</label>
+  {{ form.name(class="form-control", placeholder="Full Name") }}
+
+  <label for="email">Email</label>
+  {{ form.email(class="form-control", placeholder="Email") }}
+
+  <label for="password">Password</label>
+  {{ form.password(class="form-control", placeholder="Password") }}
+
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="logo">
+    <img src="{{ url_for('static', filename='images/logos/logo.png') }}" alt="Mindful Minutes">
+  </div>
+
+  <div class="user-actions">
+    {% if current_user.is_authenticated %}
+      <div class="user-profile">
+        <img src="{{ current_user.profile_image_url or url_for('static', filename='images/default-avatar.png') }}"
+             alt="Profile" class="profile-avatar">
+        <span class="user-name">{{ current_user.name }}</span>
+        <a href="{{ url_for('profile.index') }}">Profile</a>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </div>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Login</a>
+      <a href="{{ url_for('auth.register') }}">Sign Up</a>
+    {% endif %}
+  </div>
+</header>

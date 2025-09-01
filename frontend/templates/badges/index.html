@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Your Badges{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/badges.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2 class="slide-up">🏅 Your Badges</h2>
+
+<div class="badge-grid">
+  {% for badge in badges %}
+    <div class="badge-card {% if badge.id == session.get('new_badge') %}pulseGlow slide-up{% endif %}">
+      <img src="{{ badge.icon_url }}" alt="{{ badge.name }}" class="badge-icon">
+      <h3>{{ badge.name }}</h3>
+      <p>{{ badge.description }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

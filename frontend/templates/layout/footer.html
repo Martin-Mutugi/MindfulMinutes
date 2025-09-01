@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>&copy; {{ current_year }} Mindful Minutes. Built with care in Nairobi 🌍</p>
+
+    <ul class="footer-links">
+      <li><a href="{{ url_for('main.index') }}">Home</a></li>
+      <li><a href="{{ url_for('support.help') }}">Support</a></li>
+      <li><a href="{{ url_for('subscription.plans') }}">Upgrade</a></li>
+    </ul>
+
+    <ul class="legal-links">
+      <li><a href="{{ url_for('legal.terms') }}">Terms</a></li>
+      <li><a href="{{ url_for('legal.privacy') }}">Privacy</a></li>
+      <li><a href="{{ url_for('legal.cookies') }}">Cookies</a></li>
+    </ul>
+
+    <ul class="social-links">
+      <li><a href="https://twitter.com/mindfulminutes" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+      <li><a href="https://facebook.com/mindfulminutes" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+    </ul>
+  </div>
+</footer>

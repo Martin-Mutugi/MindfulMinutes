@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Recommended Meditations{% endblock %}
+
+{% block content %}
+<div class="meditation-recommendations">
+  <h2>🧘 Based on your recent mood: <em>{{ mood|capitalize }}</em></h2>
+
+  {% if meditations %}
+    <div class="meditation-grid">
+      {% for meditation in meditations %}
+        <div class="meditation-card {% if meditation.is_premium and not current_user.is_premium %}locked{% endif %}">
+          <img src="{{ meditation.image_url }}" alt="{{ meditation.title }}" class="meditation-image {% if meditation.is_premium and not current_user.is_premium %}blurred{% endif %}">
+
+          <h3>{{ meditation.title }}</h3>
+          <p>{{ meditation.description }}</p>
+          <div class="mood-tag">Mood: {{ meditation.mood_tag|capitalize }}</div>
+
+          {% if meditation.is_premium and not current_user.is_premium %}
+            <div class="locked-overlay">🔒 Premium Only</div>
+            <a href="{{ url_for('subscription.plans') }}" class="btn btn-primary">Upgrade to Unlock</a>
+          {% else %}
+            <audio controls>
+              <source src="{{ meditation.audio_url }}" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No meditations found for this mood yet. Try journaling again or explore all sessions.</p>
+  {% endif %}
+</div>
+{% endblock %}

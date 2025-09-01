@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Welcome to Premium{% endblock %}
+
+{% block content %}
+<div class="confirmation success" style="text-align: center; padding: 2rem;">
+  <img src="{{ url_for('static', filename='images/icons/premium-badge.svg') }}" alt="Premium Badge" style="height: 80px; margin-bottom: 1rem;">
+
+  <h2 style="font-size: 2rem; color: #2c3e50;">🎉 You're officially Premium, {{ current_user.name.split()[0] }}!</h2>
+  <p class="lead" style="margin-top: 0.5rem;">Your payment was successful and premium features are now unlocked.</p>
+
+  <div class="reference-box" style="background: #f5f5f5; padding: 1rem; border-radius: 8px; margin: 1.5rem auto; display: inline-block;">
+    <strong>Transaction Reference:</strong><br>
+    <code style="font-size: 1.1rem; color: #34495e;">{{ reference }}</code>
+  </div>
+
+  <div class="next-steps" style="margin-top: 2rem;">
+    <h4>✨ What’s now unlocked:</h4>
+    <ul style="list-style: none; padding: 0;">
+      <li>🧘 Unlimited guided meditations</li>
+      <li>📈 Mood analytics and journaling insights</li>
+      <li>🎁 Streak-based rewards and unlockables</li>
+      <li>💬 Priority support and feedback channels</li>
+    </ul>
+  </div>
+
+  <a href="{{ url_for('dashboard.index') }}" class="btn btn-success mt-4" style="margin-top: 2rem;">Go to Dashboard</a>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<script>
+  confetti({
+    particleCount: 120,
+    spread: 80,
+    origin: { y: 0.6 },
+    colors: ['#ffd700', '#00b894', '#0984e3']
+  });
+</script>
+{% endblock %}

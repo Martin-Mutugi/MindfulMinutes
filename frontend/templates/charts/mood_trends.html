@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Mood Trends{% endblock %}
+{% block content %}
+<h2>Mood Trends</h2>
+<canvas id="moodChart"></canvas>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}

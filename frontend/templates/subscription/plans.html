@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Premium Plans{% endblock %}
+{% block content %}
+
+<h2>🌟 Upgrade to Premium</h2>
+<p>Mindful Minutes is free to start — but Premium unlocks the full experience.</p>
+
+<div class="plans-grid">
+  <div class="plan-card">
+    <h3>Free</h3>
+    <ul>
+      <li>🧘 Basic meditations</li>
+      <li>📓 Journal entries</li>
+      <li>📅 Calendar view</li>
+    </ul>
+  </div>
+
+  <div class="plan-card premium">
+    <h3>Premium</h3>
+    <ul>
+      <li>🧘‍♂️ Unlimited meditations</li>
+      <li>📈 Mood analytics</li>
+      <li>🏅 Exclusive badges</li>
+      <li>🛠 Priority support</li>
+      <li>🔒 Locked session previews</li>
+    </ul>
+    <a href="{{ url_for('subscription.checkout') }}" class="btn-primary">Subscribe</a>
+  </div>
+</div>
+
+<hr>
+
+<h3>🔒 Premium Previews</h3>
+<div class="locked-content-preview">
+  <div class="locked-session">
+    <h4>“Deep Emotional Reset”</h4>
+    <p class="blurred">Advanced guided meditation for emotional clarity.</p>
+    <span class="lock-icon">🔒 Premium Only</span>
+  </div>
+  <div class="locked-session">
+    <h4>“Focus Booster”</h4>
+    <p class="blurred">Visualization to sharpen mental clarity.</p>
+    <span class="lock-icon">🔒 Premium Only</span>
+  </div>
+</div>
+
+{% endblock %}

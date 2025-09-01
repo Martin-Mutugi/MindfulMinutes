@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-auth input, .form-auth button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .meditation-grid {
+    grid-template-columns: 1fr;
+  }
+}

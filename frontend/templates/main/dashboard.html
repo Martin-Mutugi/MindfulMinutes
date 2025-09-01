@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+  <h2 class="dashboard-title">Welcome back, {{ current_user.name }}</h2>
+
+  <!-- 📆 Calendar moved to top-right -->
+  <div class="calendar-card">
+    <h3>📆 Mindfulness Calendar - {{ stats.current_month }}</h3>
+    <form method="get" action="{{ url_for('dashboard.index') }}" class="calendar-form">
+      <label for="month">Select Month:</label>
+      <input type="month" name="month" value="{{ stats.month_input_value }}">
+      <button type="submit">View</button>
+    </form>
+
+    {% if stats.calendar %}
+      <ul class="calendar-grid">
+        {% for date, icons in stats.calendar.items() %}
+          <li><strong>{{ date }}</strong>: {{ icons | join(' ') }}</li>
+        {% endfor %}
+      </ul>
+      <p><strong>Legend:</strong> 📝 Journal | 🧘 Meditation</p>
+    {% else %}
+      <p>No activity yet — start journaling or meditating to light up your calendar.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% if not stats.is_premium %}
+<div class="upgrade-banner">
+  <p>🚀 Unlock premium meditations, personalized recommendations, and exclusive badges.</p>
+  <a href="{{ url_for('subscription.checkout') }}" class="btn">Upgrade to Premium</a>
+</div>
+{% else %}
+<div class="premium-badge">
+  <span>🌟 Premium Member</span>
+</div>
+{% endif %}
+
+{% if stats.onboarding %}
+<div class="onboarding-popup">
+  <h3>👋 Welcome to Mindful Minutes</h3>
+  <p>Start by journaling or meditating to unlock your dashboard insights, earn badges, and build your wellness calendar.</p>
+  <a href="{{ url_for('journal.index') }}" class="btn">Write Your First Entry</a>
+</div>
+{% endif %}
+
+<!-- 📊 Stats Grid -->
+<div class="dashboard-grid">
+  <div class="dashboard-card">🧘 Sessions Completed<br><strong>{{ stats.sessions }}</strong></div>
+  <div class="dashboard-card">📓 Journal Entries<br><strong>{{ stats.entries }}</strong></div>
+  <div class="dashboard-card">📊 Mood Score<br><strong>{{ stats.mood_score }}</strong></div>
+  <div class="dashboard-card">⏱️ Total Minutes Meditated<br><strong>{{ stats.total_minutes }}</strong></div>
+  <div class="dashboard-card">🔥 Current Streak<br><strong>{{ stats.streaks.current }} days</strong></div>
+  <div class="dashboard-card">🏆 Longest Streak<br><strong>{{ stats.streaks.longest }} days</strong></div>
+  <div class="dashboard-card">✍️ Journal Streak<br><strong>{{ stats.journal_streaks.current }} days</strong></div>
+  <div class="dashboard-card">📅 Longest Journal Streak<br><strong>{{ stats.journal_streaks.longest }} days</strong></div>
+</div>
+
+<hr>
+
+<!-- 🏅 Badges -->
+<h3>🏅 Your Badges</h3>
+<ul class="badge-list">
+  {% if stats.badges %}
+    {% for badge in stats.badges %}
+      <li>{{ badge }}</li>
+    {% endfor %}
+  {% else %}
+    <li>No badges yet — keep journaling and meditating!</li>
+  {% endif %}
+</ul>
+
+<hr>
+
+<!-- 📊 Mood Charts Side-by-Side -->
+<div class="chart-row">
+  <div class="chart-card small-chart">
+    <h3>📊 Mood Frequency</h3>
+    {% if stats.mood_counts %}
+      <ul class="mood-frequency-list">
+        {% for mood, count in stats.mood_counts %}
+          <li>{{ mood | capitalize }}: {{ count }}</li>
+        {% endfor %}
+      </ul>
+      <canvas id="moodBarChart"></canvas>
+    {% else %}
+      <p>No mood entries yet — your journey starts with one reflection.</p>
+    {% endif %}
+  </div>
+
+  <div class="chart-card">
+    <h3>📈 Mood Timeline</h3>
+    <canvas id="moodChart"></canvas>
+  </div>
+</div>
+
+<!-- Chart.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const moodData = {{ stats.mood_timeline | tojson }};
+  const labels = moodData.map(item => item.date);
+  const data = moodData.map(item => {
+    switch (item.mood) {
+      case 'sad': return -1;
+      case 'anxious': return 0;
+      case 'calm': return 1;
+      case 'happy': return 2;
+      default: return 0;
+    }
+  });
+
+  new Chart(document.getElementById('moodChart'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Mood Over Time',
+        data: data,
+        borderColor: '#4a90e2',
+        backgroundColor: 'rgba(74, 144, 226, 0.2)',
+        tension: 0.3,
+        fill: true,
+        pointRadius: 4,
+        pointBackgroundColor: '#4a90e2'
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function(value) {
+              return {
+                '-1': '😢 Sad',
+                '0': '😰 Anxious',
+                '1': '😌 Calm',
+                '2': '😊 Happy'
+              }[value] || value;
+            }
+          },
+          min: -1,
+          max: 2
+        }
+      }
+    }
+  });
+
+  const moodCounts = {{ stats.mood_counts | tojson }};
+  const moodLabels = moodCounts.map(item => item[0]);
+  const moodValues = moodCounts.map(item => item[1]);
+
+  new Chart(document.getElementById('moodBarChart'), {
+    type: 'bar',
+    data: {
+      labels: moodLabels,
+      datasets: [{
+        label: 'Mood Frequency',
+        data: moodValues,
+        backgroundColor: '#7ed6df'
+      }]
+    },
+    options: {
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
+{% endblock %}

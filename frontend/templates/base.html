@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Mindful Minutes{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/journal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  {% block styles %}{% endblock %}
+</head>
+<body>
+  <header>
+    {% include 'layout/header.html' %}
+    {% include 'layout/navigation.html' %}
+
+    {% if current_user.is_authenticated and current_user.is_premium %}
+      <div class="premium-banner">
+        🌟 Premium Member
+      </div>
+    {% elif current_user.is_authenticated %}
+      <div class="promo-banner">
+        🌟 Upgrade to Premium — unlock unlimited meditations, mood analytics, and exclusive badges.
+        <a href="{{ url_for('subscription.plans') }}" class="btn btn-sm btn-primary">Upgrade</a>
+      </div>
+    {% endif %}
+  </header>
+
+  <main id="main-content" class="page-wrapper">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    {# current_year is already injected globally #}
+    {% include 'layout/footer.html' %}
+  </footer>
+
+  <!-- Global Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

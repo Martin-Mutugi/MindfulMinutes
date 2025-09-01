@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}All Meditations{% endblock %}
+
+{% block content %}
+<div class="meditation-library">
+  <h2>🧘 Explore All Meditations</h2>
+
+  <div class="meditation-grid">
+    {% for meditation in meditations %}
+      <div class="meditation-card {% if meditation.is_premium and not current_user.is_premium %}locked{% endif %}">
+        <img src="{{ meditation.image_url }}" alt="{{ meditation.title }}" class="meditation-image {% if meditation.is_premium and not current_user.is_premium %}blurred{% endif %}">
+
+        <h3>{{ meditation.title }}</h3>
+        <p>{{ meditation.description }}</p>
+        <small>Mood: <strong>{{ meditation.mood_tag|capitalize }}</strong></small>
+
+        {% if meditation.is_premium and not current_user.is_premium %}
+          <div class="locked-overlay">🔒 Premium Only</div>
+          <a href="{{ url_for('subscription.plans') }}" class="btn btn-warning">Upgrade to Unlock</a>
+        {% else %}
+          <audio controls>
+            <source src="{{ meditation.audio_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

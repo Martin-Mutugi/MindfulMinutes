@@ -1,0 +1,8 @@
+<!-- help.html -->
+{% extends 'base.html' %}
+{% block title %}Help Center{% endblock %}
+{% block content %}
+<h2>Need Assistance?</h2>
+<p>Browse FAQs or contact us directly.</p>
+<a href="{{ url_for('support.contact') }}" class="btn-primary">Contact Support</a>
+{% endblock %}

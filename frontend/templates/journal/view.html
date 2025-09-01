@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Journal Entry{% endblock %}
+{% block content %}
+  <h2>Journal Entry</h2>
+  <p><strong>Date:</strong> {{ entry.created_at.strftime('%B %d, %Y %I:%M %p') }}</p>
+  <p>
+    <strong>Mood:</strong>
+    {% if entry.mood == 'sad' %}
+      😢
+    {% elif entry.mood == 'happy' %}
+      😊
+    {% elif entry.mood == 'anxious' %}
+      😰
+    {% elif entry.mood == 'calm' %}
+      😌
+    {% else %}
+      📝
+    {% endif %}
+    {{ entry.mood }}
+  </p>
+  <p><strong>Sentiment:</strong> {{ entry.sentiment_label }} ({{ "%.2f"|format(entry.sentiment_score) }})</p>
+  <hr>
+  <p>{{ entry.content }}</p>
+
+  {% if recommended %}
+    <div class="recommendation-card">
+      <h3>Recommended Meditation for "{{ entry.mood }}"</h3>
+      <p><strong>{{ recommended.title }}</strong></p>
+      <p>{{ recommended.description }}</p>
+      <audio controls>
+        <source src="{{ recommended.audio_url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <!-- Mark as Completed Button -->
+      <form method="POST" action="{{ url_for('meditation.complete', id=recommended.id) }}" style="margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Mark as Completed</button>
+      </form>
+    </div>
+  {% else %}
+    <p><em>No meditation found for this mood yet.</em></p>
+  {% endif %}
+
+  <a href="{{ url_for('journal.index') }}">← Back to entries</a>
+{% endblock %}

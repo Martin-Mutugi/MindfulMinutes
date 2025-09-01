@@ -1,0 +1,8 @@
+<!-- forms.html -->
+<form method="POST" action="{{ action }}">
+  {% for field in fields %}
+    <label>{{ field.label }}</label>
+    <input type="{{ field.type }}" name="{{ field.name }}" required>
+  {% endfor %}
+  <button type="submit">{{ button_text }}</button>
+</form>

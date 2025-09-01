@@ -1,0 +1,13 @@
+# Example: IntaSend token-based checkout
+import requests
+
+def initiate_payment():
+    payload = {
+        "amount": 1000,
+        "currency": "KES",
+        "email": current_user.email,
+        "redirect_url": url_for('dashboard.index', _external=True)
+    }
+    headers = {"Authorization": "Bearer YOUR_API_KEY"}
+    response = requests.post("https://api.intasend.com/v1/checkout/", json=payload, headers=headers)
+    return redirect(response.json()['checkout_url'])

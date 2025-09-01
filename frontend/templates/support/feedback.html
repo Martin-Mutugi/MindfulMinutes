@@ -1,0 +1,11 @@
+<!-- feedback.html -->
+{% extends 'base.html' %}
+{% block title %}Feedback{% endblock %}
+{% block content %}
+<h2>We value your feedback</h2>
+<form method="POST">
+  <textarea name="feedback" rows="5" placeholder="Share your thoughts..."></textarea>
+  <input type="number" name="rating" min="1" max="5" placeholder="Rating (1–5)">
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: mindful-minutes-web
+    env: python
+    region: ohio
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn 'backend.app:create_app()' --bind 0.0.0.0:$PORT --preload
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mindful-minutes-db
+          property: connectionString
+      - key: MAIL_SERVER
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USE_TLS
+        value: true
+
+databases:
+  - name: mindful-minutes-db
+    plan: free
+    region: ohio
+    databaseName: mindful_minutes
+    user: mindful_user

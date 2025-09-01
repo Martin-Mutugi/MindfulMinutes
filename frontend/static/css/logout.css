@@ -1,0 +1,15 @@
+.logout-wrapper {
+  max-width: 400px;
+  margin: 4rem auto;
+  text-align: center;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.logout-wrapper h2 {
+  margin-bottom: 1rem;
+  animation: slideUp 0.6s ease forwards;
+}
+
+.logout-wrapper .btn {
+  margin: 0.5rem;
+}

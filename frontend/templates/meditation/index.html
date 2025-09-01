@@ -1,0 +1,15 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+{% block title %}Meditations{% endblock %}
+{% block content %}
+<h2>Explore Meditations</h2>
+<div class="meditation-grid">
+  {% for meditation in meditations %}
+    <div class="card">
+      <h3>{{ meditation.title }}</h3>
+      <p>{{ meditation.description }}</p>
+      <a href="{{ url_for('meditation.session', id=meditation.id) }}">Start</a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
