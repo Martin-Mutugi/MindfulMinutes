@@ -158,6 +158,8 @@ Every pixel designed for emotional clarity:
 
 [![Mindful Minutes Demo](VIDEO_THUMBNAIL_PLACEHOLDER)](VIDEO_LINK_PLACEHOLDER)
 
+https://youtu.be/d1tVtp3ugTI?si=wrBmBMPcVM5cxbu7
+
 *Watch our comprehensive demo showcasing the complete user journey from emotional check-in to personalized meditation experience.*
 
 ---
