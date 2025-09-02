@@ -2,6 +2,8 @@
 
 Live link: https://mindfulminutes.onrender.com
 
+Demo Vedio link: https://youtu.be/d1tVtp3ugTI?si=wrBmBMPcVM5cxbu7
+
 **Micro-meditations. Macro-impact. Built in Africa for the World.**
 
 
