@@ -738,3 +738,24 @@ body.dark-mode .fas.fa-sun {
 .theme-toggle button {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.social-links li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.social-links li a:hover {
+  color: #00bfa5;
+}
+
+.social-links i {
+  margin-right: 6px;
+}
