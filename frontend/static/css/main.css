@@ -599,3 +599,142 @@ body.dark-mode .social-links a {
     max-width: 100%;
   }
 }
+/* 🌗 Dark Mode Styles */
+body.dark-mode {
+  background: linear-gradient(to bottom right, #121212, #1e1e1e);
+  color: #eee;
+}
+
+body.dark-mode .auth-card {
+  background-color: #1e1e1e;
+  color: #eee;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .form-control {
+  background-color: #2a2a2a;
+  color: #eee;
+  border: 1px solid #555;
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #aaa;
+}
+
+body.dark-mode .btn-primary {
+  background-color: #00bfa5;
+  color: white;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #009e8f;
+}
+
+/* Optional: Smooth transitions */
+body, .auth-card, .form-control {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.plans-section {
+  padding: 30px 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.plan-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.plan-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+.plan-card ul {
+  padding-left: 0;
+  list-style: none;
+  line-height: 1.5;
+}
+
+.premium {
+  border: 2px solid #00bfa5;
+}
+
+.locked-content-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.locked-session {
+  background-color: #fff8e1;
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-size: 0.8rem;
+}
+
+.lock-icon {
+  font-size: 0.75rem;
+  color: #cc0000;
+  margin-top: 8px;
+  display: block;
+}
+
+.subscribe-footer {
+  text-align: center;
+  margin-top: 30px;
+  animation: pulseFade 1.5s infinite ease-in-out;
+}
+
+.subscribe-footer .btn-primary {
+  background-color: #00bfa5;
+  color: white;
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-footer .btn-primary:hover {
+  background-color: #009e8f;
+}
+body.dark-mode .theme-toggle button,
+body.dark-mode #darkToggle {
+  color: #eee;
+  background-color: transparent;
+}
+
+body.dark-mode .theme-toggle button:hover,
+body.dark-mode #darkToggle:hover {
+  color: #00bfa5;
+}
+body.dark-mode .theme-toggle button {
+  border: 1px solid #555;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .fas.fa-moon,
+body.dark-mode .fas.fa-sun {
+  color: #eee;
+}
+.theme-toggle button {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}

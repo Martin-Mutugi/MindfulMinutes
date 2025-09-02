@@ -1,57 +1,64 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
 <style>
   body {
     background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
   }
 
-  .auth-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 60px;
-    animation: fadeIn 1s ease-out;
+  .auth-card {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.8s ease-out;
   }
 
-  @keyframes fadeIn {
+  @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .auth-intro {
+  .auth-card h2 {
     text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .auth-intro h1 {
-    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
     color: #003366;
-    margin-bottom: 10px;
   }
 
-  .auth-intro p {
-    font-size: 1rem;
-    color: #555;
+  .social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
   }
 
-  .form-auth {
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-    width: 100%;
-    max-width: 400px;
-    animation: slideUp 0.8s ease-out;
+  .social-btn {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
   }
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .social-btn:hover {
+    background-color: #e0e0e0;
   }
 
-  .form-auth label {
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    color: #888;
+    font-size: 0.85rem;
+  }
+
+  label {
     display: block;
     margin-top: 15px;
     font-size: 0.9rem;
@@ -90,19 +97,42 @@
     background-color: #009e8f;
     transform: scale(1.03);
   }
+
+  .legal {
+    font-size: 0.7rem;
+    color: #777;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .auth-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.85rem;
+  }
+
+  .auth-footer a {
+    color: #00bfa5;
+    text-decoration: none;
+    font-weight: 500;
+  }
 </style>
 {% endblock %}
 
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<div class="auth-wrapper">
-  <div class="auth-intro">
-    <h1>Create Your Mindful Minutes Account</h1>
-    <p>Join a movement of emotional clarity and micro-meditation.</p>
+<div class="auth-card">
+  <h2>Create Your Account</h2>
+
+  <div class="social-buttons">
+    <div class="social-btn">Continue with Google</div>
+    <div class="social-btn">Continue with Apple</div>
   </div>
 
-  <form method="POST" action="{{ url_for('auth.register') }}" class="form-auth">
+  <div class="divider">or sign up with email</div>
+
+  <form method="POST" action="{{ url_for('auth.register') }}">
     {{ form.hidden_tag() }}
 
     <label for="name">Full Name</label>
@@ -116,5 +146,13 @@
 
     {{ form.submit(class="btn btn-primary") }}
   </form>
+
+  <div class="legal">
+    By signing up, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+  </div>
+
+  <div class="auth-footer">
+    Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a>
+  </div>
 </div>
 {% endblock %}

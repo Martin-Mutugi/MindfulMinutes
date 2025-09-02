@@ -1,47 +1,159 @@
 {% extends 'base.html' %}
 {% block title %}Premium Plans{% endblock %}
+
+{% block styles %}
+<style>
+  .plans-section {
+    padding: 40px 20px;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .plan-card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .plan-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .plan-card h3 {
+    margin-bottom: 15px;
+    color: #003366;
+  }
+
+  .plan-card ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .premium {
+    border: 2px solid #00bfa5;
+  }
+
+  .locked-content-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .locked-session {
+    background-color: #fff8e1;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+  }
+
+  .locked-session h4 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .blurred {
+    color: #999;
+    font-style: italic;
+  }
+
+  .lock-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 0.8rem;
+    color: #cc0000;
+  }
+
+  .subscribe-footer {
+    text-align: center;
+    margin-top: 40px;
+    animation: pulseFade 1.5s infinite ease-in-out;
+  }
+
+  @keyframes pulseFade {
+    0% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.6; transform: scale(1); }
+  }
+
+  .subscribe-footer .btn-primary {
+    background-color: #00bfa5;
+    color: white;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .subscribe-footer .btn-primary:hover {
+    background-color: #009e8f;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
+<div class="plans-section">
+  <h2>🌟 Upgrade to Premium</h2>
+  <p>Mindful Minutes is free to start — but Premium unlocks the full experience.</p>
 
-<h2>🌟 Upgrade to Premium</h2>
-<p>Mindful Minutes is free to start — but Premium unlocks the full experience.</p>
+  <div class="plans-grid">
+    <div class="plan-card">
+      <h3>Free</h3>
+      <ul>
+        <li>🧘 Basic meditations</li>
+        <li>📓 Journal entries</li>
+        <li>📅 Calendar view</li>
+      </ul>
+    </div>
 
-<div class="plans-grid">
-  <div class="plan-card">
-    <h3>Free</h3>
-    <ul>
-      <li>🧘 Basic meditations</li>
-      <li>📓 Journal entries</li>
-      <li>📅 Calendar view</li>
-    </ul>
+    <div class="plan-card premium">
+      <h3>Premium</h3>
+      <ul>
+        <li>🧘‍♂️ Unlimited meditations</li>
+        <li>📈 Mood analytics</li>
+        <li>🏅 Exclusive badges</li>
+        <li>🛠 Priority support</li>
+        <li>🔒 Locked session previews</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="plan-card premium">
-    <h3>Premium</h3>
-    <ul>
-      <li>🧘‍♂️ Unlimited meditations</li>
-      <li>📈 Mood analytics</li>
-      <li>🏅 Exclusive badges</li>
-      <li>🛠 Priority support</li>
-      <li>🔒 Locked session previews</li>
-    </ul>
+  <h3 style="margin-top: 50px;">🔒 Premium Previews</h3>
+  <div class="locked-content-preview">
+    <div class="locked-session">
+      <h4>“Deep Emotional Reset”</h4>
+      <p class="blurred">Advanced guided meditation for emotional clarity.</p>
+      <span class="lock-icon">🔒 Premium Only</span>
+    </div>
+    <div class="locked-session">
+      <h4>“Focus Booster”</h4>
+      <p class="blurred">Visualization to sharpen mental clarity.</p>
+      <span class="lock-icon">🔒 Premium Only</span>
+    </div>
+  </div>
+
+  <div class="subscribe-footer">
     <a href="{{ url_for('subscription.checkout') }}" class="btn-primary">Subscribe</a>
   </div>
 </div>
-
-<hr>
-
-<h3>🔒 Premium Previews</h3>
-<div class="locked-content-preview">
-  <div class="locked-session">
-    <h4>“Deep Emotional Reset”</h4>
-    <p class="blurred">Advanced guided meditation for emotional clarity.</p>
-    <span class="lock-icon">🔒 Premium Only</span>
-  </div>
-  <div class="locked-session">
-    <h4>“Focus Booster”</h4>
-    <p class="blurred">Visualization to sharpen mental clarity.</p>
-    <span class="lock-icon">🔒 Premium Only</span>
-  </div>
-</div>
-
 {% endblock %}
