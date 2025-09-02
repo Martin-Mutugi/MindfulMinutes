@@ -2,7 +2,7 @@
 
 Live link: https://mindfulminutes.onrender.com
 
-Demo Vedio link: https://youtu.be/d1tVtp3ugTI?si=wrBmBMPcVM5cxbu7
+Demo Vedio link:  https://drive.google.com/file/d/1zJG1zCNnWPsJwxZnIWfdyqkyua_xjB-B/view?usp=sharing
 
 **Micro-meditations. Macro-impact. Built in Africa for the World.**
 
@@ -1031,6 +1031,8 @@ furnished to do so, subject to the following conditions:
 ### Martin Mutugi - Solo Developer & Mental Health Advocate
 
 ![Martin's Profile](CREATOR_PROFILE_IMAGE_PLACEHOLDER)
+
+![My profile ](mybestImage.jpg)
 
 Martin Mutugi is a full-stack developer, educator, and mental health advocate based in Nairobi, Kenya. With a passion for using technology to solve real-world problems, Martin has dedicated his career to building applications that make a meaningful impact on people's lives.
 
